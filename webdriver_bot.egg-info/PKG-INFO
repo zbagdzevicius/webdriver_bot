@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: webdriver-bot
-Version: 0.1
+Version: 0.11
 Summary: wrapper for selenium
 Home-page: https://github.com/zbagdzevicius/webdriver_bot
 Author: Zygimantas Bagdzevicius
