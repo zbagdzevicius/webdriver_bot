@@ -1,3 +1,4 @@
+MANIFEST.in
 setup.py
 webdriver_bot/__init__.py
 webdriver_bot/bot.py
