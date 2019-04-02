@@ -1,1 +1,1 @@
-include webdrivers/*
+recursive-include webdriver_bot/webdrivers *
