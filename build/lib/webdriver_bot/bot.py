@@ -3,10 +3,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 from platform import system
 from time import sleep
 import os
 from subprocess import call
+from csv import reader
+from random import choice
+
 
 class SeleniumBot:
     def __init__(self):
@@ -15,7 +19,8 @@ class SeleniumBot:
 
     def __get_driver(self):
         driverPath = self.__get_driver_Path(system())
-        driver = webdriver.Chrome(driverPath)
+        driver_options = self.__get_driver_options()
+        driver = webdriver.Chrome(driverPath, options=driver_options)
         return driver
 
     def __get_driver_Path(self, operating_system):
@@ -30,6 +35,19 @@ class SeleniumBot:
             chrome_driver_path = f"{cwd}/webdrivers/chromedriverLinux"
             call(["chmod", "+x", chrome_driver_path])
             return chrome_driver_path
+    
+    def __get_driver_options(self):
+        user_agent = self.__get_random_user_agent()
+        options = Options()
+        options.add_argument(f"User-Agent={user_agent}")
+        return options
+    
+    def __get_random_user_agent(self):
+        with open("webdrivers/user_agents.csv") as user_agents_file:
+            reader = reader(user_agents_file)
+            chosen_user_agent = choice(list(reader))
+            return chosen_user_agent
+        
 
     def go_to_page(self, url):
         self.driver.get(url)

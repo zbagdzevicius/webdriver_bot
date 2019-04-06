@@ -10,3 +10,4 @@ webdriver_bot.egg-info/top_level.txt
 webdriver_bot/webdrivers/__init__.py
 webdriver_bot/webdrivers/chromedriver.exe
 webdriver_bot/webdrivers/chromedriverLinux
+webdriver_bot/webdrivers/user_agents.csv
