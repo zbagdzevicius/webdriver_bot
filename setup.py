@@ -1,7 +1,7 @@
 import setuptools
 setuptools.setup(
      name='webdriver_bot',  
-     version='0.31',
+     version='0.32',
      author="Zygimantas Bagdzevicius",
      author_email="zbagdzevicius@gmail.com",
      description="wrapper for selenium",

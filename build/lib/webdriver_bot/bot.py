@@ -44,7 +44,7 @@ class SeleniumBot:
     
     def __get_random_user_agent(self):
         cwd = os.path.dirname(__file__)
-        with open("{cwd}/webdrivers/user_agents.csv") as user_agents_file:
+        with open(f"{cwd}/webdrivers/user_agents.csv") as user_agents_file:
             reader = reader(user_agents_file)
             chosen_user_agent = choice(list(reader))
             return chosen_user_agent
