@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.proxy import Proxy, ProxyType
 from platform import system
 from time import sleep
 import os
@@ -20,6 +21,7 @@ class SeleniumBot:
     def __get_driver(self):
         driverPath = self.__get_driver_Path(system())
         driver_options = self.__get_driver_options()
+        # driver_desired_capabilities = self.__get_driver_desired_capabilities()
         driver = webdriver.Chrome(driverPath, options=driver_options)
         return driver
 
@@ -40,7 +42,17 @@ class SeleniumBot:
         user_agent = self.__get_random_user_agent()
         options = Options()
         options.add_argument(f"User-Agent={user_agent}")
+        # options.add_argument('--proxy-server=http://103.109.58.245:8080')
+        # options.add_argument(f"--headless")
         return options
+
+    def __get_driver_desired_capabilities(self):
+        prox = Proxy()
+        prox.proxy_type = ProxyType.MANUAL
+        prox.http_proxy = "103.109.58.245:8080"
+        capabilities = webdriver.DesiredCapabilities.CHROME
+        prox.add_to_capabilities(capabilities)
+        return capabilities
     
     def __get_random_user_agent(self):
         cwd = os.path.dirname(__file__)
